@@ -18,7 +18,9 @@ body {
     font-family: 'Microsoft YaHei', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: #f0f0fc;
 }
-body,html{
+
+body,
+html {
     min-height: 100%;
 }
 
@@ -104,17 +106,21 @@ body,html{
     width: 100%;
     overflow: hidden;
 }
-.new_movie_container{
+
+.new_movie_container {
     height: 100%;
 }
-.new_movie_item{
+
+.new_movie_item {
     height: 100%;
 }
-.new_movie_pic{
+
+.new_movie_pic {
     border-radius: 10px;
     background: url('../img/noPic.gif');
     overflow: hidden;
 }
+
 .new_movie_pic img {
     display: block;
     width: 100%;
@@ -135,21 +141,25 @@ body,html{
 .arrow_btn_right {
     right: 36px;
 }
-.background{
+
+.background {
     position: absolute;
     top: 0;
     z-index: 10;
     width: 160px;
     height: 100%;
 }
-.background_left{
+
+.background_left {
     left: 0;
     background: linear-gradient(to right, #101c41, rgba(0, 0, 0, 0));
 }
-.background_right{
+
+.background_right {
     right: 0;
-    background: linear-gradient(to left, #101c41, rgba(0, 0, 0, 0));    
+    background: linear-gradient(to left, #101c41, rgba(0, 0, 0, 0));
 }
+
 #new_movie .iconfont {
     font-size: 50px;
     text-shadow: 0 0 10px #fff;
@@ -432,7 +442,8 @@ body,html{
     line-height: 30px;
     float: left;
 }
-.info_card{
+
+.info_card {
     padding: 20px 0;
     margin-bottom: 20px;
     vertical-align: middle;
@@ -441,7 +452,8 @@ body,html{
     font-size: 20px;
     color: #009970;
 }
-.info_card .material-icons{
+
+.info_card .material-icons {
     vertical-align: middle;
     color: #e55b69;
 }
@@ -458,17 +470,30 @@ body,html{
     color: #676767;
 }
 
-#movie_list_page .material-icons {
+#movie_list_page li {
     cursor: pointer;
+    transition: 0.2s;
 }
 
-#comments_list{
+#movie_list_page li:hover {
+    background-color: #e55b69;
+}
+
+.pagination li i {
+    font-size: 20px;
+}
+
+
+/*评论页*/
+
+#comments_list {
     width: 800px;
     min-height: calc(100vh - 251px);
     margin: 0 auto;
     padding-top: 40px;
 }
-.comment_wrapper{
+
+.comment_wrapper {
     min-height: 600px;
     margin-bottom: 20px;
     padding: 20px;
@@ -476,31 +501,38 @@ body,html{
     border-radius: 10px;
     overflow: hidden;
 }
-.comment_box{
+
+.comment_box {
     height: 400px;
     overflow: auto;
 }
-.comment_item{
+
+.comment_item {
     margin-bottom: 10px;
     padding: 4px 10px;
     transition: 0.3s;
     border-radius: 10px;
     overflow: hidden;
 }
-.comment_item p{
+
+.comment_item p {
     text-indent: 2em;
 }
-.comment_item_name{
+
+.comment_item_name {
     color: #009970;
 }
-.comment_edit{
+
+.comment_edit {
     padding-top: 10px;
     border-top: 1px solid #fff;
 }
-.comment_edit textarea{
+
+.comment_edit textarea {
     height: 100px;
     outline: none;
 }
-.comment_edit .btn{
+
+.comment_edit .btn {
     float: right;
 }

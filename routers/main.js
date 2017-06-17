@@ -247,6 +247,7 @@ router.get('/comments', function (req, res, next) {
             content: content
         }).save().then(function () {
             Comments.find().then(function (data) {
+                req.query = null,
                 res.render('main/comments', {
                     type: 'comments',
                     comments: data
@@ -255,6 +256,7 @@ router.get('/comments', function (req, res, next) {
         })
     } else {
         Comments.find().then(function (data) {
+            req.query = null,            
             res.render('main/comments', {
                 type: 'comments',
                 comments: data

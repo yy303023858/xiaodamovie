@@ -23,11 +23,11 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-// app.use('/api', require('/routers/api'));
+
 app.use('/', require('./routers/main'));
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/movie', (err) => {
+mongoose.connect('mongodb://movieuser:303023858@localhost:27017/movie', (err) => {
     if (err) {
         console.log('mongodb connect fail');
     } else {

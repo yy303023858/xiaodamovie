@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="/public/css/materialize.min.css">
+    <link rel="stylesheet" href="/public/css/swiper.min.css">
+    <link rel="stylesheet" href="/public/css/iconfont.css">
+    <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+    <link rel="stylesheet" href="/public/css/main.css">
+    <title>小大电影网</title>
+</head>
+
+<body>
+    <div class="content_wrapper">
+        <header id="header">
+            <div class="header_content">
+                <div class="row">
+                    <div class="logo_wrapper">
+                        <img src="/public/img/logo.png" width="73" height="73">
+                        <h1>www.xiaodamovie.com</h1>
+                    </div>
+                    <div class="header_search">
+                        <form action="/search" class="header_search_form">
+                            <i class="iconfont icon-search"></i>
+                            <input class="header_search_input" type="text" placeholder="输入你要搜索的电影" name="name">
+                        </form>
+                    </div>
+                    <div class="header_nav">
+                        <ul class="tabs tabs-transparent">
+                            {% if type === 'index' %}
+                            <li class="tab"><a class="active index" href="/index">首页</a></li>
+                            {% else %}
+                            <li class="tab"><a class="index" href="/index">首页</a></li>
+                            {% endif %} {% if type === 'action' %}
+                            <li class="tab"><a class="active action" href="/action">动作</a></li>
+                            {% else %}
+                            <li class="tab"><a class="action" href="/action">动作</a></li>
+                            {% endif %} {% if type === 'comedy' %}
+                            <li class="tab"><a class="active comedy" href="/comedy">喜剧</a></li>
+                            {% else %}
+                            <li class="tab"><a class="comedy" href="/comedy">喜剧</a></li>
+                            {% endif %} {% if type === 'affectional'%}
+                            <li class="tab"><a class="active affectional" href="/affectional">爱情</a></li>
+                            {% else %}
+                            <li class="tab"><a class="affectional" href="/affectional">爱情</a></li>
+                            {% endif %} {% if type === 'science_fiction' %}
+                            <li class="tab"><a class="active science_fiction" href="/science_fiction">科幻</a></li>
+                            {% else %}
+                            <li class="tab"><a class="science_fiction" href="/science_fiction">科幻</a></li>
+                            {% endif %} {% if type === 'dracula' %}
+                            <li class="tab"><a class="active dracula" href="/dracula">恐怖</a></li>
+                            {% else %}
+                            <li class="tab"><a class="dracula" href="/dracula">恐怖</a></li>
+                            {% endif %} {% if type === 'comments' %}
+                            <li class="tab"><a class="active comments" href="/comments">求片区</a></li>
+                            {% else %}
+                            <li class="tab"><a class="comments" href="comments">求片区</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+    </div>
+    {% block main %}{% endblock %}
+    <footer id="footer">
+        <div id="footer_wrapper">
+            <p>本站提供的所有影视作品均是由网络免费资源搜索机器人自动搜索的结果，本站只和网友相互分 享和测试电影资源搜索结果，仅做宽带测试使用，并不存放任何资源！所有视频版权归原权利人， 如有关视频侵犯了你的权益，请与我联系，即作删除处理。
+                我们强烈建议所有影视爱好者测试后24小时内删除资源！并购买正版音像制品！ 如果您有任何意见或建议，都欢迎留言。
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/public/js/materialize.min.js"></script>
+    <script src="/public/js/swiper.jquery.min.js"></script>
+    <script src="/public/js/index.js"></script>
+</body>
+
+</html>

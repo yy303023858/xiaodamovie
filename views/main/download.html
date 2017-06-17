@@ -1,0 +1,46 @@
+{% extends 'layout.html' %} {% block main %}
+<div id="movie_download">
+    <div class="movie_card">
+        <div class="down_movie_pic">
+            <img src="{{movie.cover}}" width="177.5" height="260">
+        </div>
+        <div class="movie_info_simple">
+            <h3>{{movie.title}}</h3>
+            <ul>
+                <li>{{movie.size}}</li>
+                <li>{{movie.type}}</li>
+                <li>{{movie.resolution}}</li>
+                <li>{{movie.time}}</li>
+                <li>标签：{{movie.tag}}</li>
+                <li>清晰度：
+                    {% set star=[1,1,1,1,1] %}
+                    {% set star.length = movie.quality %}
+                    {% for item in star%}
+                        <i class="iconfont icon-star"></i>
+                    {% endfor %}
+                </li>
+            </ul>
+            <a href="#download">
+                <i class="iconfont icon-download download_btn"></i>
+            </a>
+        </div>
+    </div>
+    <div class="movie_hidInfo">{{movie.movieInfo}}</div>
+    <div class="movie_info"></div>
+    <div id="download">
+        <h4>! ! ! 点击没反应的请复制地址到迅雷</h4>
+        {% for item in movie.downLoadUrls %}
+        <div class="download_item">
+            {% if item.title %}
+            <i class="iconfont icon-download"></i>
+            <a href="{{item.url}}">{{item.title}}</a>
+            {% else %}
+            <i class="iconfont icon-download"></i>            
+            <a href="{{item.url}}">{{item.subTitle}}</a>
+            {% endif %}
+            <textarea>{{item.url}}</textarea>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

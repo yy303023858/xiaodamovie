@@ -1,0 +1,24 @@
+{% extends 'layout.html' %} {% block main %}
+<div id="comments_list">
+    <div class="comment_wrapper">
+        <div class="comment_box">
+            <ul>
+                {% for item in comments %}
+                <li class="comment_item">
+                    <strong class="comment_item_name">{{item.name}}</strong>
+                    <p>{{item.content}}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="comment_edit">
+            <form class="comment_form">
+                <input type="text" class="comment_name" name="comment_name" placeholder="给自己起一个名字">
+                <textarea class="comment_content" name="comment_content" placeholder="输入想看的电影的名字"></textarea>
+                <input type="submit" value="发送" class="btn red lighten-1 comment">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'layout.html' %} {% block main %}
+<div id="new_movie">
+    <div class="new_movie_wrapper swiper-container">
+        <ul class="new_movie_container swiper-wrapper">
+            {% for item in randomMovies%}
+            <li class="new_movie_item swiper-slide">
+                <a href="/download/{{item._id.toString()}}">
+                    <div class="new_movie_pic">
+                        <img src="{{item.cover}}">
+                    </div>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="arrow_btn arrow_btn_left">
+            <i class="iconfont icon-arrowleftcircle"></i>
+        </div>
+        <div class="arrow_btn arrow_btn_right">
+            <i class="iconfont icon-arrowrightcircle"></i>
+        </div>
+        <div class="background background_left"></div>
+        <div class="background background_right"></div>
+    </div>
+</div>
+<div class="content_wrapper">
+    <div class="nav-content subnav_wrapper">
+        <ul class="tabs tabs-transparent subnav">
+            <li class="tab"><a href="#recent" class="active">最近更新</a></li>
+            <!--<li class="tab"><a href="#popular">最受欢迎</a></li>-->
+            <!--<li class="tab"><a href="#random">随机</a></li>-->
+        </ul>
+    </div>
+    <div id="recent">
+        <div id="movieWrapper">
+            <div class="row">
+                {% for movie in recentMovies %}
+                <div class="col  s2">
+                    <div class="movie_content">
+                        <a href="/download/{{movie._id.toString()}}">
+                            <div class="movie_pic" data-id="{{movie._id.toString()}}">
+                                <img class="moviePic" src="{{movie.cover}}">
+                            </div>
+                        </a>
+                        <div class="movie_title">
+                            <span class="movie_badge">{{movie.rating}}</span>
+                            <p class="movie_tag"><span class="movie_year">{{movie.date}}</span><i class="devide">/</i><span>黑暗</span></p>
+                            <h4 class="movie_main_title">{{movie.title}}</h4>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="btn_random">
+                <a class="waves-effect waves-light btn red lighten-1" href="/list">更多</a>
+            </div>
+        </div>
+    </div>
+    <!--<div id="popular">
+        popular
+    </div>
+    <div id="random">
+        recent
+    </div>-->
+</div>
+{% endblock %}

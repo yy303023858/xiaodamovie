@@ -1,0 +1,73 @@
+{% extends 'layout.html' %} {% block main %}
+<div id="movie_list">
+    
+    {% if count > 0%}
+    {% for movie in movies %}
+    <div class="movie_list_item">
+        <div class="movie_card">
+            <div class="down_movie_pic">
+                <img src="{{movie.cover}}" width="142" height="205">
+            </div>
+            <div class="movie_info_simple">
+                <a href="/download/{{movie._id.toString()}}">
+                    <h3>{{movie.title}}</h3>
+                </a>
+                <ul class="movie_info_wrapper">
+                    <li>{{movie.size}}</li>
+                    <li>{{movie.type}}</li>
+                    <li>{{movie.resolution}}</li>
+                    <li>{{movie.time}}</li>
+                    <li>清晰度： {% set star=[1,1,1,1,1] %} {% set star.length = movie.quality %} {% for item in star%}
+                        <i class="material-icons">grade</i> {% endfor %}
+                    </li>
+                    <li>豆瓣评分：{{movie.rating}}</li> 
+                </ul>
+                <div>
+                    标签：{{movie.tag}}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <div id="movie_list_page">
+        <ul class="pagination">
+            <li class="disabled"><a href="/list?page={{page-1}}"><i class="material-icons">chevron_left</i></a></li>
+            <li class="active"><a href="#!">{{page}}</a></li>
+            {% if page < pages %}
+            <li><a href="/list?page={{page+1}}">{{page+1}}</a></li>
+            {% endif%}
+            {% if page + 1 < pages %}
+            <li><a href="/list?page={{page+2}}">{{page+2}}</a></li>
+            {% endif%}
+            {% if page + 2 < pages %}
+            <li><a href="/list?page={{page+3}}">{{page+3}}</a></li>
+            {% endif%}
+            {% if page + 3 < pages %}
+            <li><a href="/list?page={{page+4}}">{{page+4}}</a></li>
+            {% endif%}
+            {% if page + 4 < pages %}
+            <li><a href="/list?page={{page+5}}">{{page+5}}</a></li>
+            {% endif%}
+            {% if page + 5 < pages %}
+            <li><a href="/list?page={{page+6}}">{{page+6}}</a></li>
+            {% endif%}
+            {% if page + 6 < pages %}
+            <li><a href="/list?page={{page+7}}">{{page+7}}</a></li>
+            {% endif%}
+            {% if page + 7 < pages %}
+            <li><a href="/list?page={{page+8}}">{{page+8}}</a></li>
+            {% endif%}
+            <li><a href="/list?page={{page+1}}"><i class="material-icons">chevron_right</i></a></li>
+        </ul>
+        <p>{{page}}/{{pages}}</p>
+    </div>
+    {% else %}
+    <div class="info_card">
+        <i class="material-icons">error_outline</i>
+        <span>暂时没有该影片，如有需要请去求片区留言</span>
+        <i class="material-icons">error_outline</i>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

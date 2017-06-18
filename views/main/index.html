@@ -26,8 +26,6 @@
     <div class="nav-content subnav_wrapper">
         <ul class="tabs tabs-transparent subnav">
             <li class="tab"><a href="#recent" class="active">最近更新</a></li>
-            <!--<li class="tab"><a href="#popular">最受欢迎</a></li>-->
-            <!--<li class="tab"><a href="#random">随机</a></li>-->
         </ul>
     </div>
     <div id="recent">
@@ -43,7 +41,9 @@
                         </a>
                         <div class="movie_title">
                             <span class="movie_badge">{{movie.rating}}</span>
-                            <p class="movie_tag"><span class="movie_year">{{movie.date}}</span><i class="devide">/</i><span>黑暗</span></p>
+                            <p class="movie_tag">
+                                <span>{{movie.date}} / {{movie.tag}}</span>
+                            </p>
                             <h4 class="movie_main_title">{{movie.title}}</h4>
                         </div>
                     </div>

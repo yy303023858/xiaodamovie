@@ -38,6 +38,7 @@ mongoose.connect('mongodb://movieuser:303023858@localhost:27017/movie', (err) =>
 
 // let count = 0;
 // let movieData = require('./movie.json');
+// movieData.reverse();
 
 // for (item of movieData) {
 //     if (/站长推荐/g.test(item.title)) {

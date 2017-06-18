@@ -223,6 +223,9 @@ html {
     width: 1200px;
     margin: 0 auto;
 }
+#movieWrapper .row{
+    margin-bottom: 38px;
+}
 
 .movie_pic {
     overflow: hidden;
@@ -260,9 +263,13 @@ html {
 }
 
 .movie_tag {
+    width: 100%;
     line-height: 30px;
     font-size: 14px;
     color: #009970;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .movie_main_title {
@@ -453,7 +460,8 @@ html {
     color: #009970;
 }
 
-.info_card .material-icons {
+.info_card .iconfont {
+    font-size: 26px;
     vertical-align: middle;
     color: #e55b69;
 }

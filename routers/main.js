@@ -4,10 +4,11 @@ var NewMovie = require('../models/NewMovie');
 var Comments = require('../models/Comments');
 
 var router = express.Router();
+var movieType = 'all';
 // 主页
 router.get('/', (req, res, next) => {
-    Movie.find().limit(300).then(function (allMovies) {
-        Movie.find().limit(12).then((movies) => {
+    Movie.find().sort({_id: -1}).limit(300).then(function (allMovies) {
+        Movie.find().sort({_id: -1}).limit(12).then((movies) => {
             var randomMovies = []
             for (var i = 0; i < 10; i++) {
                 randomMovies.push(allMovies[Math.ceil(Math.random() * allMovies.length)]);
@@ -21,8 +22,8 @@ router.get('/', (req, res, next) => {
     });
 });
 router.get('/index', (req, res, next) => {
-    Movie.find().limit(200).then(function (allMovies) {
-        Movie.find().limit(12).then((movies) => {
+    Movie.find().sort({_id: -1}).limit(200).then(function (allMovies) {
+        Movie.find().sort({_id: -1}).limit(12).then((movies) => {
             var randomMovies = []
             for (var i = 0; i < 10; i++) {
                 randomMovies.push(allMovies[Math.ceil(Math.random() * allMovies.length)]);
@@ -45,23 +46,22 @@ router.get('/download/:id', (req, res, next) => {
         });
     });
 });
+
 // 更多列表页
 router.get('/list', function (req, res, next) {
     var page = Number(req.query.page || 1);
     var limit = 10;
     var pages = 0;
-    Movie.count().then(function (count) {
+    Movie.count().sort({_id: -1}).then(function (count) {
         // 计算总页数
         pages = Math.ceil(count / limit);
         // 取值不能超过pages
         page = Math.min(page, pages)
         page = Math.max(page, 1);
         var skip = (page - 1) * limit;
-        // sort({id: })
-        // 1升序
-        // -1降序
-        Movie.find().limit(limit).skip(skip).then(function (movies) {
+        Movie.find().sort({_id: -1}).limit(limit).skip(skip).then(function (movies) {
             res.render('main/list', {
+                type: 'list',
                 movies: movies,
                 count: count,
                 pages: pages,
@@ -79,7 +79,7 @@ router.get('/search', function (req, res, next) {
     var pages = 0;
     Movie.find({
         title: new RegExp(str)
-    }).count().then(function (count) {
+    }).count().sort({_id: -1}).then(function (count) {
         // 计算总页数
         pages = Math.ceil(count / limit);
         // 取值不能超过pages
@@ -88,7 +88,7 @@ router.get('/search', function (req, res, next) {
         var skip = (page - 1) * limit;
         Movie.find({
             title: new RegExp(str)
-        }).limit(limit).skip(skip).then(function (movies) {
+        }).sort({_id: -1}).limit(limit).skip(skip).then(function (movies) {
             res.render('main/list', {
                 type: 'index',
                 movies: movies,
@@ -107,7 +107,7 @@ router.get('/action', function (req, res, next) {
     var pages = 0;
     Movie.find({
         tag: /动作/g
-    }).count().then(function (count) {
+    }).sort({_id: -1}).count().then(function (count) {
         // 计算总页数
         pages = Math.ceil(count / limit);
         // 取值不能超过pages
@@ -116,7 +116,7 @@ router.get('/action', function (req, res, next) {
         var skip = (page - 1) * limit;
         Movie.find({
             tag: /动作/g
-        }).limit(limit).skip(skip).then(function (movies) {
+        }).sort({_id: -1}).limit(limit).skip(skip).then(function (movies) {
             res.render('main/list', {
                 type: 'action',
                 movies: movies,
@@ -135,7 +135,7 @@ router.get('/comedy', function (req, res, next) {
     var pages = 0;
     Movie.find({
         tag: /喜剧/g
-    }).count().then(function (count) {
+    }).sort({_id: -1}).count().then(function (count) {
         // 计算总页数
         pages = Math.ceil(count / limit);
         // 取值不能超过pages
@@ -144,7 +144,7 @@ router.get('/comedy', function (req, res, next) {
         var skip = (page - 1) * limit;
         Movie.find({
             tag: /喜剧/g
-        }).limit(limit).skip(skip).then(function (movies) {
+        }).sort({_id: -1}).limit(limit).skip(skip).then(function (movies) {
             res.render('main/list', {
                 type: 'comedy',
                 movies: movies,
@@ -163,7 +163,7 @@ router.get('/affectional', function (req, res, next) {
     var pages = 0;
     Movie.find({
         tag: /爱情/g
-    }).count().then(function (count) {
+    }).sort({_id: -1}).count().then(function (count) {
         // 计算总页数
         pages = Math.ceil(count / limit);
         // 取值不能超过pages
@@ -172,7 +172,7 @@ router.get('/affectional', function (req, res, next) {
         var skip = (page - 1) * limit;
         Movie.find({
             tag: /爱情/g
-        }).limit(limit).skip(skip).then(function (movies) {
+        }).sort({_id: -1}).limit(limit).skip(skip).then(function (movies) {
             res.render('main/list', {
                 type: 'affectional',
                 movies: movies,
@@ -190,7 +190,7 @@ router.get('/science_fiction', function (req, res, next) {
     var pages = 0;
     Movie.find({
         tag: /科幻/g
-    }).count().then(function (count) {
+    }).sort({_id: -1}).count().then(function (count) {
         // 计算总页数
         pages = Math.ceil(count / limit);
         // 取值不能超过pages
@@ -199,7 +199,7 @@ router.get('/science_fiction', function (req, res, next) {
         var skip = (page - 1) * limit;
         Movie.find({
             tag: /科幻/g
-        }).limit(limit).skip(skip).then(function (movies) {
+        }).sort({_id: -1}).limit(limit).skip(skip).then(function (movies) {
             res.render('main/list', {
                 type: 'science_fiction',
                 movies: movies,
@@ -217,7 +217,7 @@ router.get('/dracula', function (req, res, next) {
     var pages = 0;
     Movie.find({
         tag: /恐怖/g
-    }).count().then(function (count) {
+    }).sort({_id: -1}).count().then(function (count) {
         // 计算总页数
         pages = Math.ceil(count / limit);
         // 取值不能超过pages
@@ -226,7 +226,7 @@ router.get('/dracula', function (req, res, next) {
         var skip = (page - 1) * limit;
         Movie.find({
             tag: /恐怖/g
-        }).limit(limit).skip(skip).then(function (movies) {
+        }).sort({_id: -1}).limit(limit).skip(skip).then(function (movies) {
             res.render('main/list', {
                 type: 'dracula',
                 movies: movies,

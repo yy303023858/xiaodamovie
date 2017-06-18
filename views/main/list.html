@@ -35,41 +35,41 @@
     {% endfor %}
     <div id="movie_list_page">
         <ul class="pagination">
-            <li><a href="/list?page={{page-1}}"><i class="iconfont icon-fanhui"></i></a></li>
+            <li><a href="/{{type}}?page={{page-1}}"><i class="iconfont icon-fanhui"></i></a></li>
             <li class="active"><a href="#!">{{page}}</a></li>
             {% if page < pages %}
-            <li><a href="/list?page={{page+1}}">{{page+1}}</a></li>
+            <li><a href="/{{type}}?page={{page+1}}">{{page+1}}</a></li>
             {% endif%}
             {% if page + 1 < pages %}
-            <li><a href="/list?page={{page+2}}">{{page+2}}</a></li>
+            <li><a href="/{{type}}?page={{page+2}}">{{page+2}}</a></li>
             {% endif%}
             {% if page + 2 < pages %}
-            <li><a href="/list?page={{page+3}}">{{page+3}}</a></li>
+            <li><a href="/{{type}}?page={{page+3}}">{{page+3}}</a></li>
             {% endif%}
             {% if page + 3 < pages %}
-            <li><a href="/list?page={{page+4}}">{{page+4}}</a></li>
+            <li><a href="/{{type}}?page={{page+4}}">{{page+4}}</a></li>
             {% endif%}
             {% if page + 4 < pages %}
-            <li><a href="/list?page={{page+5}}">{{page+5}}</a></li>
+            <li><a href="/{{type}}?page={{page+5}}">{{page+5}}</a></li>
             {% endif%}
             {% if page + 5 < pages %}
-            <li><a href="/list?page={{page+6}}">{{page+6}}</a></li>
+            <li><a href="/{{type}}?page={{page+6}}">{{page+6}}</a></li>
             {% endif%}
             {% if page + 6 < pages %}
-            <li><a href="/list?page={{page+7}}">{{page+7}}</a></li>
+            <li><a href="/{{type}}?page={{page+7}}">{{page+7}}</a></li>
             {% endif%}
             {% if page + 7 < pages %}
-            <li><a href="/list?page={{page+8}}">{{page+8}}</a></li>
+            <li><a href="/{{type}}?page={{page+8}}">{{page+8}}</a></li>
             {% endif%}
-            <li><a href="/list?page={{page+1}}"><i class="iconfont icon-gengduo"></i></a></li>
+            <li><a href="/{{type}}?page={{page+1}}"><i class="iconfont icon-gengduo"></i></a></li>
         </ul>
         <p>{{page}}/{{pages}}</p>
     </div>
     {% else %}
     <div class="info_card">
-        <i class="material-icons">error_outline</i>
+        <i class="iconfont icon-waring"></i>
         <span>暂时没有该影片，如有需要请去求片区留言</span>
-        <i class="material-icons">error_outline</i>
+        <i class="iconfont icon-waring"></i>        
     </div>
     {% endif %}
 </div>

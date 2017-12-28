@@ -97,6 +97,8 @@ html {
 /*中间轮播部分*/
 
 #new_movie {
+    width: 1200px;
+    margin: 0 auto;
     padding-top: 70px;
     margin-bottom: 50px;
 }
@@ -116,6 +118,8 @@ html {
 }
 
 .new_movie_pic {
+    width: 224px;
+    min-height: 224px;
     border-radius: 10px;
     background: url('../img/noPic.gif');
     overflow: hidden;

@@ -32,11 +32,4 @@ $(function () {
         }
     });
 
-    // 处理图片错误展示
-    $('img').one('load', function () {
-        if (!/dexiazai/g.test(this.src)) {
-            $(this).remove()
-        }
-    });
-
 });
